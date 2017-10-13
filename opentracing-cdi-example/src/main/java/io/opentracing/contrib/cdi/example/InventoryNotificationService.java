@@ -1,6 +1,5 @@
 package io.opentracing.contrib.cdi.example;
 
-import io.opentracing.ActiveSpan;
 import io.opentracing.Span;
 import io.opentracing.Tracer;
 
@@ -20,7 +19,7 @@ public class InventoryNotificationService {
     Tracer tracer;
 
     @Inject
-    ActiveSpan parentSpan;
+    Span parentSpan;
 
     public void sendNotification(@Observes InventoryChangeEvent event) {
         Span span = tracer.buildSpan("myBusinessSpan").asChildOf(parentSpan.context()).startManual();

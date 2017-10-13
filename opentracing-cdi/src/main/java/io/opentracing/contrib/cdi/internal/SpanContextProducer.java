@@ -1,6 +1,7 @@
 package io.opentracing.contrib.cdi.internal;
 
-import io.opentracing.ActiveSpan;
+import io.opentracing.Scope;
+import io.opentracing.Span;
 import io.opentracing.SpanContext;
 import io.opentracing.Tracer;
 import io.opentracing.contrib.web.servlet.filter.TracingFilter;
@@ -35,13 +36,24 @@ public class SpanContextProducer {
     }
 
     @Produces
-    public ActiveSpan produceActiveSpan(InjectionPoint ip) {
-        ActiveSpan activeSpan = tracer.activeSpan();
-        if (null == activeSpan) {
+    public Span produceSpan(InjectionPoint ip) {
+        Scope scope = tracer.scopeManager().active();
+        if (null == scope) {
+            String spanName = ip.getMember().getName();
+            return tracer.buildSpan(spanName).startActive().span();
+        }
+
+        return scope.span();
+    }
+
+    @Produces
+    public Scope produceScope(InjectionPoint ip) {
+        Scope scope = tracer.scopeManager().active();
+        if (null == scope) {
             String spanName = ip.getMember().getName();
             return tracer.buildSpan(spanName).startActive();
         }
 
-        return activeSpan;
+        return scope;
     }
 }
