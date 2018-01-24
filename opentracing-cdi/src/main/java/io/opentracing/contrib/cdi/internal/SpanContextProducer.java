@@ -40,7 +40,7 @@ public class SpanContextProducer {
         Scope scope = tracer.scopeManager().active();
         if (null == scope) {
             String spanName = ip.getMember().getName();
-            return tracer.buildSpan(spanName).startActive().span();
+            return tracer.buildSpan(spanName).startActive(false).span();
         }
 
         return scope.span();
@@ -51,7 +51,7 @@ public class SpanContextProducer {
         Scope scope = tracer.scopeManager().active();
         if (null == scope) {
             String spanName = ip.getMember().getName();
-            return tracer.buildSpan(spanName).startActive();
+            return tracer.buildSpan(spanName).startActive(false);
         }
 
         return scope;

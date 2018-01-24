@@ -39,25 +39,25 @@ it's possible to get the request's `SpanContext` via CDI:
 SpanContext spanContext;
 ```
 
-### Injecting an `ActiveSpan`
+### Injecting a `Scope`
 
-This integration also exposes a producer that allows the injection of an `ActiveSpan`:
+This integration also exposes a producer that allows the injection of a `Scope`:
 
 ```java
 @Inject
-ActiveSpan activeSpan;
+Scope scope;
 ```
 
-All the caveats of using the `ActiveSpan` apply. As a rule of thumb, it can be considered
+All the caveats of using the `Scope` apply. As a rule of thumb, it can be considered
 safe to use on synchronous applications, but should not be used for async processing. You can
 safely mix sync and async if you pass the context from the sync object to the async explicitly,
 like:
 
 ```java
-@Inject ActiveSpan activeSpan
+@Inject Scope scope
 
 public void myAction() {
-    myAsyncAction.perform(activeSpan.context());
+    myAsyncAction.perform(scpe.context());
 }
 ```
 

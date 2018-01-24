@@ -4,7 +4,7 @@
 
 This example shows the different ways to use the OpenTracing CDI integration. It features
 getting a `Tracer` injected into your components, as well as a `SpanContext` (when the Servlet
-integration is also in place) and an `ActiveSpan` for non-async applications.
+integration is also in place) and a `Scope` (current active span) for non-async applications.
 
 The example has the following call tree:
 

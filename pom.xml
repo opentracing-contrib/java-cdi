@@ -39,9 +39,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <version.io.opentracing>0.31.0-RC1</version.io.opentracing>
-        <version.io.opentracing.ejb>0.0.6</version.io.opentracing.ejb>
-        <version.io.opentracing.tracerresolver>0.1.0</version.io.opentracing.tracerresolver>
+        <version.io.opentracing>0.31.0</version.io.opentracing>
+        <version.io.opentracing.ejb>0.0.7</version.io.opentracing.ejb>
+        <version.io.opentracing.tracerresolver>0.1.4</version.io.opentracing.tracerresolver>
 
         <!-- plugins -->
         <version.maven-release-plugin>2.5.3</version.maven-release-plugin>
